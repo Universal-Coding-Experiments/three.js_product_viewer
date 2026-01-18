@@ -1,0 +1,105 @@
+<html>
+
+<head>
+  <title>Three.js Product Viewer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white antialiased">
+  <div id="viewer" class="w-full h-screen"></div>
+
+  <div class="ui fixed left-4 right-4 top-4 z-20">
+    <div class="glass rounded-xl shadow-lg p-4">
+
+      <div class="mb-3 border-b border-gray-200 dark:border-gray-700 pb-3">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-medium opacity-80">Model</span>
+
+          <div id="dropZone" class="flex-1 flex items-center justify-center gap-3 p-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 cursor-pointer
+                      hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition text-sm">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 15a4 4 0 004 4h10a4 4 0 004-4v-6a4 4 0 00-4-4h-3l-2-2H9L7 5H6a4 4 0 00-3 2.5" />
+            </svg>
+            <span id="uploadText" class="text-xs text-gray-600 dark:text-gray-300">Drag .glb or click to upload</span>
+            <input id="glbInput" type="file" accept=".glb,.gltf" class="sr-only" />
+          </div>
+        </div>
+        <div id="uploadStatus" class="text-xs mt-2 text-gray-500 dark:text-gray-400"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="label">Background</span>
+          <button id="bgLight" class="btn">Light</button>
+          <button id="bgDark" class="btn">Dark</button>
+          <button id="bgTransparent" class="btn">Transparent</button>
+
+          <div class="relative">
+            <select id="envPreset" class="select" title="Environment preset">
+              <option value="">No HDRI</option>
+              <option value="studio_small.hdr">Studio</option>
+              <option value="venice_sunset_1k.hdr">Outdoor</option>
+              <option value="empty_warehouse.hdr">Warehouse</option>
+            </select>
+            <div class="tooltip absolute -bottom-8 left-0 text-xs bg-gray-800 text-white px-2 py-1 rounded">
+              Add .hdr files to /hdr/ folder
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="label">Shadows</span>
+          <select id="shadowQuality" class="select" title="Shadow quality">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+          <button id="gridBtn" class="btn">Grid</button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="label">Camera</span>
+          <button id="presetFront" class="btn">Front</button>
+          <button id="presetSide" class="btn">Side</button>
+          <button id="presetTop" class="btn">Top</button>
+          <button id="resetBtn" class="btn">Reset</button>
+          <button id="fullscreenBtn" class="btn">Fullscreen</button>
+          <label class="flex items-center gap-2 text-sm">
+            <input type="checkbox" id="autoRotateToggle" class="rounded" /> <span class="text-xs">Auto‑rotate</span>
+          </label>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="label">Appearance</span>
+          <input id="colorPicker" type="color" value="#ffffff" class="w-10 h-8 p-0 border rounded cursor-pointer"
+            title="Pick color" />
+          <div class="relative">
+            <select id="textureSelect" class="select" title="Texture">
+              <option value="">No Texture</option>
+              <option value="matte.jpg">Matte</option>
+              <option value="glossy.jpg">Glossy</option>
+              <option value="pattern.jpg">Pattern</option>
+            </select>
+            <div class="tooltip absolute -bottom-8 left-0 text-xs bg-gray-800 text-white px-2 py-1 rounded">
+              Add images to /textures/ folder
+            </div>
+          </div>
+          <button id="resetAppearanceBtn" class="btn">Reset</button>
+          <button id="screenshotBtn" class="btn">Screenshot</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="loading"
+    class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg px-4 py-3 shadow-lg z-30 hidden text-sm bg-white/90 dark:bg-slate-900/90">
+    Loading…
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>
