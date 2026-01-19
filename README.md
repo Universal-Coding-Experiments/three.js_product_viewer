@@ -5,7 +5,7 @@ Three.js product viewer featuring HDRI environment presets, shadow controls, gro
 ---
 
 #### 🔗 Live demo
-https://universal-coding-experiments.github.io/three.js-product-viewer/
+https://universal-coding-experiments.github.io/three.js_product_viewer/
 
 ---
 
@@ -174,7 +174,7 @@ https://universal-coding-experiments.github.io/three.js-product-viewer/
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/Universal-Coding-Experiments/three.js-product-viewer.git
+git clone https://github.com/Universal-Coding-Experiments/three.js_product_viewer.git
 ```
 
 ---
